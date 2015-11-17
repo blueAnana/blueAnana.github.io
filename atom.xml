@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[MD's Blog]]></title>
-  <subtitle><![CDATA[Keep Studying]]></subtitle>
+  <title><![CDATA[Pineapple]]></title>
+  <subtitle><![CDATA[Record Something]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://blueanana.github.io/"/>
   <updated>2015-11-17T04:31:10.206Z</updated>
