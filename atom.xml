@@ -1,18 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Hexo]]></title>
-  <subtitle><![CDATA[= =]]></subtitle>
+  <title><![CDATA[MD's Blog]]></title>
+  <subtitle><![CDATA[Keep Studying]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://blueanana.github.io/"/>
-  <updated>2015-11-15T12:32:53.745Z</updated>
+  <updated>2015-11-17T04:17:31.777Z</updated>
   <id>https://blueanana.github.io/</id>
   
   <author>
-    <name><![CDATA[Butterfly]]></name>
+    <name><![CDATA[butterfly]]></name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Markdown Grammar]]></title>
+    <link href="https://blueanana.github.io/2015/11/17/markdown/"/>
+    <id>https://blueanana.github.io/2015/11/17/markdown/</id>
+    <published>2015-11-17T04:14:11.000Z</published>
+    <updated>2015-11-17T04:17:31.777Z</updated>
+    <content type="html"><![CDATA[<h2 id="1-Title">1.Title</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Title <span class="number">1</span></span></span><br><span class="line"><span class="preprocessor">## Title <span class="number">2</span></span></span><br><span class="line"><span class="preprocessor">### Title <span class="number">3</span></span></span><br><span class="line"><span class="preprocessor">#### Title <span class="number">4</span></span></span><br><span class="line"><span class="preprocessor">##### Title <span class="number">5</span></span></span><br><span class="line"><span class="preprocessor">###### Title <span class="number">6</span></span></span><br><span class="line">---</span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+<h1 id="Title_1">Title 1</h1><h2 id="Title_2">Title 2</h2><h3 id="Title_3">Title 3</h3><h4 id="Title_4">Title 4</h4><h5 id="Title_5">Title 5</h5><h6 id="Title_6">Title 6</h6><hr>
+<p>##2. Reference<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="operator">Reference</span></span><br><span class="line">&gt;&gt; Nesting <span class="operator">Reference</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Reference</p>
+<blockquote>
+<p>Nesting Reference</p>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="3-_Font">3. Font</h2><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">*</span>Italics<span class="keyword">*</span></span><br><span class="line">_Italics_</span><br><span class="line"><span class="keyword">*</span><span class="keyword">*</span>Bold face<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">__Bold face__</span><br></pre></td></tr></table></figure>
+<p><em>Italics</em><br><em>Italics</em><br><strong>Bold face</strong><br><strong>Bold face</strong></p>
+<hr>
+<h2 id="4-_List">4. List</h2><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> list1</span><br><span class="line"></span>  -<span class="ruby"> nest list1</span><br><span class="line"></span>    -<span class="ruby"> nest nest list &lt;!-- does it work? --!&gt;</span><br><span class="line"></span>  + nest list2</span><br><span class="line">  * nest list3</span><br><span class="line">+ list2</span><br><span class="line">* list3</span><br><span class="line">1. list1</span><br><span class="line">1. list2</span><br><span class="line">2. list3</span><br><span class="line">&lt;!-- The sorted list does not rely on the index? --!&gt;</span><br><span class="line">&lt;!-- And why it is still nesting list!! --!&gt;</span><br><span class="line">-<span class="ruby"> [ ] no</span><br><span class="line"></span>-<span class="ruby"> [x] yes</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>list1<ul>
+<li>nest list1<ul>
+<li>nest nest list</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>nest list2</li>
+</ul>
+<ul>
+<li>nest list3</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>list2</li>
+</ul>
+<ul>
+<li>list3</li>
+</ul>
+<ol>
+<li>list1</li>
+<li>list2</li>
+<li>list3</li>
+</ol>
+<ul>
+<li>[ ] no</li>
+<li>[x] yes</li>
+</ul>
+<hr>
+<h2 id="5-_Link">5. Link</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[<span class="link_label">Google</span>](<span class="link_url">http://google.com</span>)</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">http:</span>//<span class="attribute">google.com</span>&gt;</span></span></span><br><span class="line">![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5BgORGNs3DOYv3eN3oF8mHUpbMrahuwdZV4KedxXCsoHxrh9cQ)</span><br><span class="line"></span><br><span class="line">reference link:</span><br><span class="line">[<span class="link_label">Google</span>][<span class="link_reference">1</span>]</span><br><span class="line">![][2]</span><br><span class="line">[<span class="link_reference">1</span>]:<span class="link_url"> http://google.com</span></span><br><span class="line">[<span class="link_reference">2</span>]:<span class="link_url"> https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5BgORGNs3DOYv3eN3oF8mHUpbMrahuwdZV4KedxXCsoHxrh9cQ</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://google.com" target="_blank" rel="external">Google</a><br><a href="http://google.com" target="_blank" rel="external">http://google.com</a><br><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5BgORGNs3DOYv3eN3oF8mHUpbMrahuwdZV4KedxXCsoHxrh9cQ" alt=""></p>
+<hr>
+<h2 id="6-_code">6. code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```<span class="function">Java</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```<span class="function">Java</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="7-_form">7. form</h2><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string">first</span>|<span class="string">second</span>|<span class="string">third</span>|</span><br><span class="line">|<span class="string">--</span>|<span class="string">:--:</span>|<span class="string">--:</span>|</span><br><span class="line">|<span class="string">1</span>|<span class="string">2</span>|<span class="string">3</span>|</span><br><span class="line">|<span class="string">1</span>|<span class="string">2</span>|<span class="string">3</span>|</span><br><span class="line"><span class="variable">&lt;!-- don't you think the blank is form is useless... !--&gt;</span></span><br><span class="line"><span class="variable">&lt;!-- this form is also ok ↓ --!&gt;</span></span><br><span class="line"></span><br><span class="line">first|<span class="string">second</span>|third</span><br><span class="line">--|<span class="string">:--:</span>|<span class="string">--:</span><br><span class="line">1</span>|<span class="string">2</span>|3</span><br><span class="line">1|<span class="string">2</span>|3</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>first</th>
+<th style="text-align:center">second</th>
+<th style="text-align:right">third</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="1-Title">1.Title</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="li]]>
+    </summary>
+    
+      <category term="markdown" scheme="https://blueanana.github.io/tags/markdown/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
