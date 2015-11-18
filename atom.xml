@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Record Something]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://blueanana.github.io/"/>
-  <updated>2015-11-17T04:31:10.206Z</updated>
+  <updated>2015-11-18T13:36:47.785Z</updated>
   <id>https://blueanana.github.io/</id>
   
   <author>
@@ -13,6 +13,92 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Basic Binary Search]]></title>
+    <link href="https://blueanana.github.io/2015/11/18/BasicBinarySearch/"/>
+    <id>https://blueanana.github.io/2015/11/18/BasicBinarySearch/</id>
+    <published>2015-11-18T08:58:04.000Z</published>
+    <updated>2015-11-18T13:36:47.785Z</updated>
+    <content type="html"><![CDATA[<p>刷了几道二分查找相关的题，稍微总结一下。</p>
+<blockquote>
+<p><strong>二分查找</strong>是一种在有序数组中查找某一特定元素的搜索算法。搜索过程从数组的中间元素开始，如果中间元素正好是要查找的元素，则搜索过程结束；如果某一特定元素大于或者小于中间元素，则在数组大于或小于中间元素的那一半中查找，而且跟开始一样从中间元素开始比较。如果在某一步骤数组为空，则代表找不到。这种搜索算法每一次比较都使搜索范围缩小一半。<br>–wikipedia</p>
+</blockquote>
+<h1 id="无重复有序数组">无重复有序数组</h1><p>即最基本的二分查找<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span> <span class="params">(<span class="keyword">int</span>[] nums, target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (target == nums[mid]) retrun mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[mid]) right = mid - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> left = mid + <span class="number">1</span>；</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="微扩展">微扩展</h2><ul>
+<li><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="external">#35 Search Insert Position</a></li>
+</ul>
+<blockquote>
+<p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+</blockquote>
+<p>设想循环走到了后期，即left和right分别指向两个相邻的数。这时会先判断left，如果target<nums[left], 则改变right直到跳出循环；如果target="">nums[left]，则left增一，后面改变的只是right值。<br>总之跳出循环后，left指向总是target所在的位置，或是最近的大于target数(即插入位置)的位置，最后返回left即可(同理，right总是指向target或最近的小于target数)。</nums[left],></p>
+<ul>
+<li>只需要最后返回值语句改为 <strong>return left;</strong></li>
+</ul>
+<hr>
+<h1 id="有重复有序数组">有重复有序数组</h1><ul>
+<li><a href="https://leetcode.com/problems/search-for-a-range/" target="_blank" rel="external">#34 Search for a Range</a></li>
+</ul>
+<blockquote>
+<p>Given a sorted array of integers, find the starting and ending position of a given target value.<br>Your algorithm’s runtime complexity must be in the order of O(log n).<br>If the target is not found in the array, return [-1, -1].</p>
+</blockquote>
+<p>第一版本：通过二分法找到一个与target相等的数组元素，然后向两边扩展，直到边界。</p>
+<p>第二版本：<br>当程序运行到target=nums[mid]的情况时，它可能正处于一串重复的元素之中。这时候可能有两种情况：</p>
+<ul>
+<li>mid就是边界</li>
+<li>边界在mid的左边</li>
+</ul>
+<p>所以需要做的不是返回，而是继续对左边部分做二分查找，直到最后left与right重合，即为起始边界。或者如果目标值不在数组内，则left为最近的大于target数的位置。(e.g. num[] = {1}, target = 0;)<br>至于结束边界，可以反向思考。<br>看到一个复用代码的方式：找target+1的起始边界，target的结束边界为前者减一。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">       <span class="keyword">int</span> start = getBound(nums, target);</span><br><span class="line">       <span class="comment">//注意判断target不在数组中的情况</span></span><br><span class="line">       <span class="keyword">if</span> (start == nums.length || nums[start] != target)</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, -<span class="number">1</span>&#125;;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;start, getBound(nums, target+<span class="number">1</span>)-<span class="number">1</span>&#125;;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getBound</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length-<span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">           <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">           <span class="keyword">if</span> (target == nums[mid])</span><br><span class="line">               <span class="keyword">if</span> (left == right)<span class="comment">//mid就是边界</span></span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               <span class="keyword">else</span>              <span class="comment">//边界在mid左边</span></span><br><span class="line">                   right = mid;</span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[mid]) right = mid - <span class="number">1</span>;</span><br><span class="line">           <span class="keyword">else</span> left = mid + <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> left;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="特殊无序数组">特殊无序数组</h1><p>有一种特殊的无序数组，是一组有序数组在某个点旋转。(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).</p>
+<h2 id="无重复">无重复</h2><ul>
+<li><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="external">Search in Rotated Sorted Array</a></li>
+</ul>
+<blockquote>
+<p>Suppose a sorted array is rotated at some pivot unknown to you beforehand.<br>You are given a target value to search. If found in the array return its index, otherwise return -1.<br>You may assume no duplicate exists in the array.</p>
+</blockquote>
+<p>第一版本：先通过二分查找找到分界pivot，然后判断target处于前半部分还是后半部分，最后对相应部分做二分查找。<br>第二版本：做正常二分查找，并在查找途中进行相应判断。得到mid后，判断left与mid位置值的大小。</p>
+<ul>
+<li>nums[left] &lt;= nums[mid]，说明左半边是正常序列，即没有pivot。<ul>
+<li>判断target是否在左半边序列范围内，若在，则继续对左半边进行查找；(注意范围的定义)</li>
+<li>若不在，则查找右半边。</li>
+</ul>
+</li>
+<li>nums[left] &gt; nums[mid]，pivot在左半边。原理与上面相同。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">           <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">           <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span> (nums[left] &lt;= nums[mid]) &#123;</span><br><span class="line">               <span class="keyword">if</span> (target &gt;= nums[left] &amp;&amp; target &lt; nums[mid])</span><br><span class="line">                   right = mid-<span class="number">1</span>;</span><br><span class="line">               <span class="keyword">else</span></span><br><span class="line">                   left = mid+<span class="number">1</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (target &gt; nums[mid] &amp;&amp; target &lt;= nums[right])</span><br><span class="line">                   left = mid+<span class="number">1</span>;</span><br><span class="line">               <span class="keyword">else</span></span><br><span class="line">                   right = mid-<span class="number">1</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="有重复">有重复</h2><ul>
+<li><a href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/" target="_blank" rel="external">Search in Rotated Sorted Array II</a></li>
+</ul>
+<blockquote>
+<p>Follow up for “Search in Rotated Sorted Array”:<br>What if duplicates are allowed?<br>Write a function to determine if a given target is in the array.</p>
+</blockquote>
+<p>相比较于无重数组，多了一种特殊情况：e.g. 1111112 -&gt; 1121111 -&gt; 1111211<br>你无法判断pivot在左还是右，甚至是否存在。<br>这时nums[left] == nums[mid]就无法二分了，因为根本不知道往哪个区间二分，这时候只能遍历，直到left遇到一个其他数字，或超出范围。<br>最坏情况：全部都是同一个数的重复数组，O(n)。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">           <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">           <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span> (nums[left] &lt; nums[mid]) &#123;</span><br><span class="line">               <span class="keyword">if</span> (target &gt;= nums[left] &amp;&amp; target &lt; nums[mid])</span><br><span class="line">                   right = mid-<span class="number">1</span>;</span><br><span class="line">               <span class="keyword">else</span></span><br><span class="line">                   left = mid+<span class="number">1</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span> (nums[left] &gt; nums[mid]) &#123;</span><br><span class="line">               <span class="keyword">if</span> (target &gt; nums[mid] &amp;&amp; target &lt;= nums[right])</span><br><span class="line">                   left = mid+<span class="number">1</span>;</span><br><span class="line">               <span class="keyword">else</span></span><br><span class="line">                   right = mid-<span class="number">1</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               left++;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="总结">总结</h1><p>觉得最重要还是要理清最后left和right指向的到底是什么吧，总是想着想着就乱掉。</p>
+<ul>
+<li>最后left和right指向两个相邻的数</li>
+<li>先判断left，然后是right</li>
+<li>right指向的是小于等于target的数</li>
+<li>left指向的是大于等于target的数</li>
+</ul>
+<p>发现有几道应用二分查找的无序数组的题，需要再探索一下。<br>Continue…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>刷了几道二分查找相关的题，稍微总结一下。</p>
+<blockquote>
+<p><strong>二分查找</strong>是一种在有序数组中查找某一特定元素的搜索算法。搜索过程从数组的中间元素开始，如果中间元素正好是要查找的元素，则搜索过程结束；如果某一特定元素大于或者小于中间元素，则在数组大于或小于中间元素的那一半中查找，而且跟开始一样从中间元素开始比较。如果在某一步骤数组为空，则代表找不到。这种搜索算法每一次比较都使搜索范围缩小一半。<br>–wikipedia</p>
+</blockquote>
+<h1 id="无重复有序数组">无重复有序数组</h1><p>即最基本的二分查找<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span> <span class="params">(<span class="keyword">int</span>[] nums, target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (target == nums[mid]) retrun mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[mid]) right = mid - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> left = mid + <span class="number">1</span>；</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]>
+    
+    </summary>
+    
+      <category term="binary search" scheme="https://blueanana.github.io/tags/binary-search/"/>
+    
+      <category term="leetcode" scheme="https://blueanana.github.io/tags/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Markdown Grammar]]></title>

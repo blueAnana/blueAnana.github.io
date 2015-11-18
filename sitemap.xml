@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blueanana.github.io/2015/11/18/BasicBinarySearch/</loc>
+    <lastmod>2015-11-18T13:36:47.785Z</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blueanana.github.io/tags/index.html</loc>
     <lastmod>2015-11-17T08:04:09.269Z</lastmod>
   </url>
