@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blueanana.github.io/2015/11/19/SomeAboutCycle/</loc>
+    <lastmod>2015-11-19T14:27:49.591Z</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blueanana.github.io/2015/11/18/BasicBinarySearch/</loc>
-    <lastmod>2015-11-18T13:36:47.785Z</lastmod>
+    <lastmod>2015-11-18T13:37:15.938Z</lastmod>
   </url>
   
   <url>
@@ -14,11 +19,6 @@
   <url>
     <loc>https://blueanana.github.io/2015/11/17/markdown/</loc>
     <lastmod>2015-11-17T04:31:10.206Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blueanana.github.io/2015/11/15/hello-world/</loc>
-    <lastmod>2015-11-15T12:32:53.745Z</lastmod>
   </url>
   
 </urlset>
