@@ -69,7 +69,7 @@ Validate if a given string is numeric.Some examples:“0” =&amp;gt; true“ 0.
 <meta property="og:image" content="http://ww3.sinaimg.cn/small/b6e1c277gw1ey7m2eivl2j201g01e3ya.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b6e1c277gw1ey7m2gvo48j20hl08w0v9.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/b6e1c277gw1ey7m2eqc6oj209a09mgma.jpg">
-<meta property="og:updated_time" content="2015-11-20T10:54:11.910Z">
+<meta property="og:updated_time" content="2015-11-20T10:59:35.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对某题的吐槽">
 <meta name="twitter:description" content="#65 Valid Number
@@ -292,7 +292,11 @@ Validate if a given string is numeric.Some examples:“0” =&amp;gt; true“ 0.
 <li>去除首尾空格</li>
 <li>判断第一个字符<ol>
 <li>0</li>
+</ol>
+<ul>
 <li>下一个如果不是小数点或结束 – false</li>
+</ul>
+<ol>
 <li>其他数字</li>
 <li>其他字符 – false</li>
 </ol>
@@ -300,8 +304,12 @@ Validate if a given string is numeric.Some examples:“0” =&amp;gt; true“ 0.
 <li>剩余字符<ol>
 <li>数字</li>
 <li>小数点</li>
+</ol>
+<ul>
 <li>重复出现 – false</li>
 <li>下一个结束 – false</li>
+</ul>
+<ol>
 <li>科学计数法e</li>
 <li>重复出现 – false</li>
 <li>后面跟0 –false</li>
