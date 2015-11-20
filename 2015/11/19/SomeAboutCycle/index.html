@@ -71,9 +71,10 @@ Given a linked list, determine if it has a cycle in it.Follow up:Can you solve i
 设两个指向头部的变量one &amp;amp; two，one每次前进一个节点，two另一个每次前进两个。
 
 如果链表中存在环，则最后">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/b6e1c277gw1ey781zeasnj20g209ajrw.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b6e1c277gw1ey77f4ri1fj20f707wjsc.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/b6e1c277gw1ey77gpqrjwj20nz0hstb7.jpg">
-<meta property="og:updated_time" content="2015-11-20T02:02:14.518Z">
+<meta property="og:updated_time" content="2015-11-20T02:18:12.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Some About Cycle">
 <meta name="twitter:description" content="判断环#141 Linked List Cycle
@@ -299,7 +300,7 @@ Given a linked list, determine if it has a cycle in it.Follow up:Can you solve i
 <blockquote>
 <p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.<br>Note: Do not modify the linked list.<br>Follow up:<br>Can you solve it without using extra space?</p>
 </blockquote>
-<p>设链表头部节点与环起始节点的距离为<strong>d</strong>，环的长度为<strong>r</strong>。<br>当one变量走了<strong>k</strong>步时，两变量重合(two走了<strong>2k</strong>步，two领先one <strong>n</strong> 圈)，设此时与环起始节点的距离为<strong>s</strong>。</p>
+<p><img src="http://ww2.sinaimg.cn/mw690/b6e1c277gw1ey781zeasnj20g209ajrw.jpg" alt=""><br>设链表头部节点与环起始节点的距离为<strong>d</strong>，环的长度为<strong>r</strong>。<br>当one变量走了<strong>k</strong>步时，两变量重合(two走了<strong>2k</strong>步，two领先one <strong>n</strong> 圈)，设此时与环起始节点的距离为<strong>s</strong>。</p>
 <ul>
 <li>2k - k = nr  -&gt;  k = nr</li>
 <li>k = d + s + mr  -&gt;  nr = d + s + mr  -&gt;  d + s = (n - m)r<br>从该式可以看出，从s点处再走d步，就能走完整个环，回到环的起点。<br>s点与链表头到环起始节点的距离都是d步。<br>这时让两个变量分别从s点和链表头走，每次走一步，到两者重合的时候，该点就是环的起始节点了。<br><strong>注意要先判断链表中是否有环</strong></li>
