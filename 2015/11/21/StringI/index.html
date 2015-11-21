@@ -63,7 +63,7 @@ Given an array of strings, group anagrams together.For example, given: [“eat�
 <meta property="og:description" content="Group Anagrams#49 Group Anagrams
 
 Given an array of strings, group anagrams together.For example, given: [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],Return:[  [“ate”, “eat”,”tea”],  [“nat”,”tan”],  [“b">
-<meta property="og:updated_time" content="2015-11-21T14:53:01.594Z">
+<meta property="og:updated_time" content="2015-11-21T14:54:21.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String I">
 <meta name="twitter:description" content="Group Anagrams#49 Group Anagrams
@@ -284,9 +284,9 @@ Given an array of strings, group anagrams together.For example, given: [“eat�
 <ul>
 <li>遍历string数组，得到当前单词的顺序字符串，然后在HashMap中查找。</li>
 <li>若HashMap中已存在该key，则将该单词插入到对应的list中。</li>
-<li>若不存在，则新插入键值对。<br>最后将Map中的list放入需要返回的表中。<br>注意，因为题中要求list中的元素是有序的，所以要在最开始的时候将单词数组排序，以保证插入的顺序。</li>
+<li>若不存在，则新插入键值对。<br>最后将Map中的list放入需要返回的表中。<br>注意，因为题中要求list中的元素是有序的，所以要在最开始的时候将单词数组排序，以保证插入的顺序。<a id="more"></a>
+对容器的使用还不是很熟练啊~而且没有IDE，库函数好难记啊~</li>
 </ul>
-<p>对容器的使用还不是很熟练啊~而且没有IDE，库函数好难记啊~</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;</span><br><span class="line">       <span class="comment">//排序不能少，因为要保证最后结果是顺序的</span></span><br><span class="line">       Arrays.sort(strs);</span><br><span class="line">       Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;String, List&lt;String&gt;&gt;();</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; i++) &#123;</span><br><span class="line">           <span class="keyword">char</span>[] c = strs[i].toCharArray();</span><br><span class="line">           Arrays.sort(c);</span><br><span class="line">           String s = String.valueOf(c);</span><br><span class="line">           <span class="keyword">if</span> (!map.containsKey(s)) </span><br><span class="line">               map.put(s, <span class="keyword">new</span> ArrayList&lt;String&gt;());</span><br><span class="line">           map.get(s).add(strs[i]);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;(map.values());</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <h1 id="Interleaving_String">Interleaving String</h1><p><a href="https://leetcode.com/problems/interleaving-string/" target="_blank" rel="external">#97 Interleaving String</a></p>
 <blockquote>
