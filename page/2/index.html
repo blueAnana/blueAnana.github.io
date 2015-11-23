@@ -56,7 +56,7 @@
 <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pineapple">
-<meta property="og:url" content="https://blueanana.github.io/archives/2015/11/index.html">
+<meta property="og:url" content="https://blueanana.github.io/page/2/index.html">
 <meta property="og:site_name" content="Pineapple">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -73,7 +73,7 @@
   };
 </script>
 
-  <title> 归档 | Pineapple </title>
+  <title> Pineapple </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -104,7 +104,9 @@
 
 
 
-  <div class="container one-column  page-archive ">
+  <div class="container one-column 
+   page-home 
+">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -207,281 +209,108 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 7 篇日志。 继续努力。
-    </span>
+  <section id="posts" class="posts-expand">
 
     
 
-      
+    
+    
       
       
 
       
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/18/BasicBinarySearch/" itemprop="url">
+                  Basic Binary Search
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-18T16:58:04+08:00" content="2015-11-18">
+              2015-11-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/18/BasicBinarySearch/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/BasicBinarySearch/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
         </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/23/StringII/" itemprop="url">
-              
-                <span itemprop="name">String II</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-23T21:15:12+08:00"
-              content="2015-11-23" >
-          11-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+      </header>
     
 
-      
-      
-      
+
+    <div class="post-body">
 
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2015/11/23/NQueen/" itemprop="url">
-              
-                <span itemprop="name">N-Queen</span>
-              
+          <p>刷了几道二分查找相关的题，稍微总结一下。</p>
+<blockquote>
+<p><strong>二分查找</strong>是一种在有序数组中查找某一特定元素的搜索算法。搜索过程从数组的中间元素开始，如果中间元素正好是要查找的元素，则搜索过程结束；如果某一特定元素大于或者小于中间元素，则在数组大于或小于中间元素的那一半中查找，而且跟开始一样从中间元素开始比较。如果在某一步骤数组为空，则代表找不到。这种搜索算法每一次比较都使搜索范围缩小一半。<br>–wikipedia</p>
+</blockquote>
+<h1 id="无重复有序数组">无重复有序数组</h1><p>即最基本的二分查找<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span> <span class="params">(<span class="keyword">int</span>[] nums, target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (target == nums[mid]) retrun mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[mid]) right = mid - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> left = mid + <span class="number">1</span>；</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/18/BasicBinarySearch/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-23T21:14:51+08:00"
-              content="2015-11-23" >
-          11-23
-        </time>
-      </div>
+    <footer class="post-footer">
+      
 
-    </header>
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/21/StringI/" itemprop="url">
-              
-                <span itemprop="name">String I</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-21T17:37:40+08:00"
-              content="2015-11-21" >
-          11-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/20/TuCao/" itemprop="url">
-              
-                <span itemprop="name">对某题的吐槽</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-20T18:19:48+08:00"
-              content="2015-11-20" >
-          11-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/19/SomeAboutCycle/" itemprop="url">
-              
-                <span itemprop="name">Some About Cycle</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-19T19:34:29+08:00"
-              content="2015-11-19" >
-          11-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/18/BasicBinarySearch/" itemprop="url">
-              
-                <span itemprop="name">Basic Binary Search</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-18T16:58:04+08:00"
-              content="2015-11-18" >
-          11-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/11/17/markdown/" itemprop="url">
-              
-                <span itemprop="name">Markdown Grammar</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-17T12:14:11+08:00"
-              content="2015-11-17" >
-          11-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
 
 
     
@@ -489,6 +318,9 @@
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
@@ -625,12 +457,6 @@
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
 
   
     
@@ -674,12 +500,6 @@
   <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   <script type="text/javascript" src="/js/bootstrap.js"></script>
 
