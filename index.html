@@ -238,6 +238,106 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/24/StringIII/" itemprop="url">
+                  StringIII
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-24T19:24:45+08:00" content="2015-11-24">
+              2015-11-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/24/StringIII/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/24/StringIII/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <ul>
+<li>Reverse Words in a String</li>
+<li>Longest Common SubSequence</li>
+</ul>
+<h1 id="Reverse_Words_in_a_String">Reverse Words in a String</h1><p><a href="https://leetcode.com/problems/reverse-words-in-a-string/">Reverse Words in a String</a></p>
+<blockquote>
+<p>Given an input string, reverse the string word by word.<br>For example,<br>Given s = “the sky is blue”,<br>return “blue is sky the”.</p>
+</blockquote>
+<p>之前有遇到这个题目，现在看到别人家的simple solution之后，发现用暴力解题的我真是太low了。<br>利用正则表达式，直接调用String类自带的工具–split()方法。</p>
+<blockquote>
+<p>split() – “将字符串从正则表达式匹配的地方切开。”<br>–《Thinking in Java》</p>
+</blockquote>
+<p>在这题中，就可以使用该方法，将String字符串从根据空格切割成String数组，每个元素就是一个单词(貌似不用考虑标点？)。<br>最后倒序输出就可以了。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/24/StringIII/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/11/23/StringII/" itemprop="url">
                   String II
                 </a>
@@ -374,9 +474,7 @@
 
       
         
-          <span itemprop="articleBody">
-            
-              <p><a href="https://leetcode.com/problems/n-queens/" target="_blank" rel="external">#51 N-Queens</a></p>
+          <p><a href="https://leetcode.com/problems/n-queens/">#51 N-Queens</a></p>
 <blockquote>
 <p>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.</p>
 </blockquote>
@@ -395,10 +493,12 @@
   <span class="string">"...Q"</span>,
   <span class="string">".Q.."</span>]
 ]
-</code></pre><p>感觉题目说的不清不楚的，至少我看完上面的题目描述，我不知道我应该做什么。<br>将n个皇后棋子布置在一个n*n的棋盘上，使两个皇后之间无法互相攻击，及每一行，每一列，每一斜线上都只有唯一一个棋子存在(注意有两条斜线)。<br>以行作为回溯单位<br>//to do</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; solveNQueens(<span class="keyword">int</span> n) &#123;</span><br><span class="line">       <span class="keyword">boolean</span>[][] board = <span class="keyword">new</span> <span class="keyword">boolean</span>[n][n];</span><br><span class="line">       List&lt;List&lt;String&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;List&lt;String&gt;&gt;();</span><br><span class="line">       <span class="keyword">if</span> (n == <span class="number">2</span> || n == <span class="number">3</span>)</span><br><span class="line">           <span class="keyword">return</span> list;</span><br><span class="line">       setQueen(<span class="number">0</span>, <span class="number">0</span>, board, n, list);</span><br><span class="line">       <span class="keyword">return</span> list;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">setQueen</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[][] board, <span class="keyword">int</span> n, List&lt;List&lt;String&gt;&gt; list)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">while</span> (row &lt; n &amp;&amp; col &lt; n) &#123;</span><br><span class="line">           <span class="keyword">if</span> (check(row, col, board, n)) &#123;</span><br><span class="line">               board[row][col] = <span class="keyword">true</span>;</span><br><span class="line">               <span class="comment">//最后一行时，将目前方案放入list</span></span><br><span class="line">               <span class="keyword">if</span> (row == n -<span class="number">1</span>) &#123;</span><br><span class="line">                   List&lt;String&gt; oneRes = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">                   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                       StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">                       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                           <span class="keyword">if</span> (board[i][j])</span><br><span class="line">                               sb.append(<span class="string">"Q"</span>);</span><br><span class="line">                           <span class="keyword">else</span></span><br><span class="line">                               sb.append(<span class="string">"."</span>);</span><br><span class="line">                       &#125;</span><br><span class="line">                       oneRes.add(sb.toString());</span><br><span class="line">                   &#125;</span><br><span class="line">                   list.add(oneRes);</span><br><span class="line">                   board[row][col] = <span class="keyword">false</span>;</span><br><span class="line">                   <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               setQueen(row+<span class="number">1</span>, <span class="number">0</span>, board, n, list);</span><br><span class="line">               board[row][col] = <span class="keyword">false</span>;</span><br><span class="line">               col++;</span><br><span class="line">    </span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (col &lt; n-<span class="number">1</span>)</span><br><span class="line">                   col++;</span><br><span class="line">               <span class="keyword">else</span></span><br><span class="line">                   <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[][] board, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//同列有无皇后</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (board[i][col] == <span class="keyword">true</span>)</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//同行有无皇后</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; col; i++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (board[row][i] == <span class="keyword">true</span>)</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//往左上方向</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = row - <span class="number">1</span>, j = col - <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>; i--, j--) &#123;</span><br><span class="line">           <span class="keyword">if</span> (board[i][j] == <span class="keyword">true</span>)</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//往右上方向</span></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = row - <span class="number">1</span>, j = col + <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &lt; n; i--, j++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (board[i][j] == <span class="keyword">true</span>)</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-            
-          </span>
+</code></pre><p>感觉题目说的不清不楚的，至少我看完上面的题目描述，我不知道我应该做什么。<br>将n个皇后棋子布置在一个n*n的棋盘上，使两个皇后之间无法互相攻击，及每一行，每一列，每一斜线上都只有唯一一个棋子存在(注意有两条斜线)。<br>以行作为回溯单位<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/23/NQueen/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -605,106 +705,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/19/SomeAboutCycle/" itemprop="url">
-                  Some About Cycle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-19T19:34:29+08:00" content="2015-11-19">
-              2015-11-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/19/SomeAboutCycle/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/SomeAboutCycle/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="判断环">判断环</h1><p><a href="https://leetcode.com/problems/linked-list-cycle/">#141 Linked List Cycle</a></p>
-<blockquote>
-<p>Given a linked list, determine if it has a cycle in it.<br>Follow up:<br>Can you solve it without using extra space?</p>
-</blockquote>
-<p>设两个指向头部的变量one &amp; two，one每次前进一个节点，two另一个每次前进两个。</p>
-<ul>
-<li>如果链表中存在环，则最后两个变量都会指向同一个节点。<ul>
-<li>设两变量都已在环中，两者相距x步。当one继续走x步时，two走了2x步，这时两者重合。</li>
-</ul>
-</li>
-<li>若果链表中没有环，则最后two的指针会走向链尾null。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (head == <span class="keyword">null</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       ListNode one = head, two = head;</span><br><span class="line">       <span class="keyword">while</span> (two.next != <span class="keyword">null</span> &amp;&amp; two.next.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">           one = one.next;</span><br><span class="line">           two = two.next.next;</span><br><span class="line">           <span class="keyword">if</span> (one == two)</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/19/SomeAboutCycle/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -751,7 +751,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
