@@ -69,7 +69,7 @@ Longest Common SubSequence
 Reverse Words in a StringReverse Words in a String
 
 Given an input string, reverse the string word by word.For example,Given s = “the sky is blue”">
-<meta property="og:updated_time" content="2015-11-24T12:43:07.054Z">
+<meta property="og:updated_time" content="2015-11-24T12:45:19.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="StringIII">
 <meta name="twitter:description" content="Reverse Words in a String
@@ -312,7 +312,7 @@ Given an input string, reverse the string word by word.For example,Given s = “
 <p>最长公共子序列(Longest Common SubSequence)和最长公共子串(Longest Common SubString)是不一样的，前者不要求连续。<br>比如：</p>
 <ul>
 <li>abcde</li>
-<li><em>a</em>kk<em>bc</em>kk<br>abc即是它们的公共子串。</li>
+<li><strong>a</strong>kk<strong>bc</strong>kk<br>abc即是它们的公共子串。</li>
 </ul>
 <p>如果用暴力破解的话，时间复杂度到了指数级的高度。一般是用动规来解决(貌似是动规经典题？)。</p>
 <h2 id="公共子序列长度">公共子序列长度</h2><p>首先是先考虑得到最长公共子序列的长度。<br>利用动规的思想，将问题分割为子问题，然后在子问题的解上判断。<br>对于字符串a和b，记录下a前i个和b前j个的子串所拥有的最长公共子序列，然后在子串的基础上判断之后字符串。</p>
@@ -329,7 +329,7 @@ Given an input string, reverse the string word by word.For example,Given s = “
 <li>来自dp[i-1][j-1]， director[i][j] = “left_up”;</li>
 <li>来自dp[i-1][j],    director[i][j] = “up”;</li>
 <li>来自dp[i][j-1],    director[i][j] = “left”;<br>然后再根据director所指的方向(从右下角开始走)，找到对应的字符就可以了(注意这时是倒序)。<blockquote>
-<p>0 0 0 0 0 0 0<br><em>0</em> 0 0 0 1 1 1<br>0 <em>1</em> <em>1</em> 1 1 2 2<br>0 1 1 <em>2</em> <em>2</em> 2 2<br>0 1 1 2 2 <em>3</em> 3<br>0 1 2 2 2 <em>3</em> 3<br>0 1 2 2 3 3 <em>4</em><br>0 1 2 2 3 4 <em>4</em></p>
+<p>0 0 0 0 0 0 0<br><strong>0</strong> 0 0 0 1 1 1<br>0 <strong>1</strong> <strong>1</strong> 1 1 2 2<br>0 1 1 <strong>2</strong> <strong>2</strong> 2 2<br>0 1 1 2 2 <strong>3</strong> 3<br>0 1 2 2 2 <strong>3</strong> 3<br>0 1 2 2 3 3 <strong>4</strong><br>0 1 2 2 3 4 <strong>4</strong></p>
 </blockquote>
 </li>
 </ul>
