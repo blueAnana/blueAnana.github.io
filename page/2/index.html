@@ -238,6 +238,102 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/21/StringI/" itemprop="url">
+                  String I
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-21T17:37:40+08:00" content="2015-11-21">
+              2015-11-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/21/StringI/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/21/StringI/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="Group_Anagrams">Group Anagrams</h1><p><a href="https://leetcode.com/problems/anagrams/">#49 Group Anagrams</a></p>
+<blockquote>
+<p>Given an array of strings, group anagrams together.<br>For example, given: [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],<br>Return:<br>[<br>  [“ate”, “eat”,”tea”],<br>  [“nat”,”tan”],<br>  [“bat”]<br>]<br>Note:<br>For the return value, each inner list’s elements must follow the lexicographic order.<br>All inputs will be in lower-case.</p>
+</blockquote>
+<p>思路：先将各个单词排序，排序后的字符串相同的单词即是anagrams。<br>具体实现需要用到容器HashMap<sorted, original list>，以键值对的形式保存排序后字符串相同的所有单词。key就是排序后字符串，value就是原本的单词组成的list。<br>e.g. (“abc”, [“abc”, “acb”, “bac”])</p>
+<ul>
+<li>遍历string数组，得到当前单词的顺序字符串，然后在HashMap中查找。</li>
+<li>若HashMap中已存在该key，则将该单词插入到对应的list中。</li>
+<li>若不存在，则新插入键值对。<br>最后将Map中的list放入需要返回的表中。<br>注意，因为题中要求list中的元素是有序的，所以要在最开始的时候将单词数组排序，以保证插入的顺序。
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/21/StringI/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/11/20/TuCao/" itemprop="url">
                   对某题的吐槽
                 </a>
@@ -636,7 +732,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -650,7 +746,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

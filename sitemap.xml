@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blueanana.github.io/2015/12/01/permutation/</loc>
+    <lastmod>2015-12-02T03:47:24.652Z</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blueanana.github.io/2015/11/29/LongestIncSubsequence/</loc>
     <lastmod>2015-11-29T14:32:59.492Z</lastmod>
   </url>
