@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Record Something]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://blueanana.github.io/"/>
-  <updated>2015-12-03T14:02:57.410Z</updated>
+  <updated>2015-12-03T14:05:17.244Z</updated>
   <id>https://blueanana.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="https://blueanana.github.io/2015/12/03/BestTimetoBuyandSellStock/"/>
     <id>https://blueanana.github.io/2015/12/03/BestTimetoBuyandSellStock/</id>
     <published>2015-12-03T12:22:47.000Z</published>
-    <updated>2015-12-03T14:02:57.410Z</updated>
+    <updated>2015-12-03T14:05:17.244Z</updated>
     <content type="html"><![CDATA[<ul>
 <li>Best Time to Buy and Sell Stock</li>
 <li>Best Time to Buy and Sell Stock II</li>
@@ -53,7 +53,7 @@
 <blockquote>
 <p>Say you have an array for which the ith element is the price of a given stock on day i.<br>Design an algorithm to find the maximum profit. You may complete at most k transactions.<br>Note:<br>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
 </blockquote>
-<p>好吧，这题还不是很理解，再研究一下。<br>// To be done …</p>
+<p>好吧，这题还不是很理解，再研究一下。<br>// To be done …<br><a href="http://blog.csdn.net/linhuanmars/article/details/23236995" target="_blank" rel="external">参考链接</a></p>
 <p>直接解的时候内存溢出了，因为k太大了。<br>其实可以发现，当k超过数组长度的一半时，就相当于回到了第二题，因为每一天都能做交易。<br>对于k &gt;= N/2的，直接调用第二题的函数。<br>k比较小的，则使用动规。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (k &gt;= prices.length/<span class="number">2</span>)</span><br><span class="line">           <span class="keyword">return</span> stockII(prices);</span><br><span class="line">           </span><br><span class="line">       <span class="keyword">int</span>[] local = <span class="keyword">new</span> <span class="keyword">int</span>[k+<span class="number">1</span>];  </span><br><span class="line">       <span class="keyword">int</span>[] global = <span class="keyword">new</span> <span class="keyword">int</span>[k+<span class="number">1</span>];  </span><br><span class="line">       </span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length - <span class="number">1</span>; i++)  </span><br><span class="line">       &#123;  </span><br><span class="line">           <span class="keyword">int</span> dis = prices[i+<span class="number">1</span>] - prices[i];  </span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = k; j &gt;= <span class="number">1</span>; j--)  </span><br><span class="line">           &#123;</span><br><span class="line">               local[j] = Math.max(global[j-<span class="number">1</span>] + Math.max(dis, <span class="number">0</span>), local[j] + dis);  </span><br><span class="line">               global[j] = Math.max(local[j], global[j]);  </span><br><span class="line">           &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line">       <span class="keyword">return</span> global[k];  </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">stockII</span><span class="params">(<span class="keyword">int</span> prices[])</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)</span><br><span class="line">           <span class="keyword">if</span> (prices[i] &gt; prices[i - <span class="number">1</span>])</span><br><span class="line">               maxProfit += prices[i] - prices[i - <span class="number">1</span>];</span><br><span class="line">       <span class="keyword">return</span> maxProfit;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
     <summary type="html">
