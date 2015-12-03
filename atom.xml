@@ -159,7 +159,7 @@
     <link href="https://blueanana.github.io/2015/11/29/LongestIncSubsequence/"/>
     <id>https://blueanana.github.io/2015/11/29/LongestIncSubsequence/</id>
     <published>2015-11-29T12:50:57.000Z</published>
-    <updated>2015-11-29T14:32:59.492Z</updated>
+    <updated>2015-12-03T14:08:56.503Z</updated>
     <content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" rel="external">#300 Longest Increasing Subsequence</a></p>
 <blockquote>
 <p>Given an unsorted array of integers, find the length of longest increasing subsequence.<br>For example,<br>Given [10, 9, 2, 5, 3, 7, 101, 18],<br>The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.<br>Your algorithm should run in O(n2) complexity.<br>Follow up: Could you improve it to O(n log n) time complexity?</p>
@@ -201,7 +201,7 @@
     
     </summary>
     
-      <category term="dynamic programing" scheme="https://blueanana.github.io/tags/dynamic-programing/"/>
+      <category term="dynamic programming" scheme="https://blueanana.github.io/tags/dynamic-programming/"/>
     
       <category term="leetcode" scheme="https://blueanana.github.io/tags/leetcode/"/>
     
@@ -388,7 +388,7 @@
     <link href="https://blueanana.github.io/2015/11/21/StringI/"/>
     <id>https://blueanana.github.io/2015/11/21/StringI/</id>
     <published>2015-11-21T09:37:40.000Z</published>
-    <updated>2015-11-21T14:54:21.641Z</updated>
+    <updated>2015-12-03T14:09:30.456Z</updated>
     <content type="html"><![CDATA[<h1 id="Group_Anagrams">Group Anagrams</h1><p><a href="https://leetcode.com/problems/anagrams/" target="_blank" rel="external">#49 Group Anagrams</a></p>
 <blockquote>
 <p>Given an array of strings, group anagrams together.<br>For example, given: [“eat”, “tea”, “tan”, “ate”, “nat”, “bat”],<br>Return:<br>[<br>  [“ate”, “eat”,”tea”],<br>  [“nat”,”tan”],<br>  [“bat”]<br>]<br>Note:<br>For the return value, each inner list’s elements must follow the lexicographic order.<br>All inputs will be in lower-case.</p>
@@ -439,7 +439,7 @@
     
     </summary>
     
-      <category term="dynamic programing" scheme="https://blueanana.github.io/tags/dynamic-programing/"/>
+      <category term="dynamic programming" scheme="https://blueanana.github.io/tags/dynamic-programming/"/>
     
       <category term="leetcode" scheme="https://blueanana.github.io/tags/leetcode/"/>
     
