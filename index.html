@@ -238,6 +238,107 @@
             
               
                 
+                <a class="post-title-link" href="/2015/12/03/BestTimetoBuyandSellStock/" itemprop="url">
+                  Best Time to Buy and Sell Stock
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-03T20:22:47+08:00" content="2015-12-03">
+              2015-12-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/03/BestTimetoBuyandSellStock/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/03/BestTimetoBuyandSellStock/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <ul>
+<li>Best Time to Buy and Sell Stock</li>
+<li>Best Time to Buy and Sell Stock II</li>
+<li>Best Time to Buy and Sell Stock III</li>
+<li>Best Time to Buy and Sell Stock IV</li>
+</ul>
+<h1 id="Best_Time_to_Buy_and_Sell_Stock">Best Time to Buy and Sell Stock</h1><p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">https://leetcode.com/problems/best-time-to-buy-and-sell-stock/</a></p>
+<blockquote>
+<p>Say you have an array for which the ith element is the price of a given stock on day i.<br>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+</blockquote>
+<p>题目大意是：<br>有一个数组记录着一支股票的价格变化，第i个元素表示该股票在第i天的价格。<br>现在你最多只能对这支股票做一次操作(买入和卖出各一次)，设计一个算法使收益最大。<br>(吐槽一下，一开始都没看懂题目在说什么。)</p>
+<p>解题思路：<br>收益最大的情形是，在最低价时买入，最高价时卖出。<br>用一个变量记录最小值，收益为当天价格减去最小值，更新最大收益。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (prices.length == <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> minStock = prices[<span class="number">0</span>], maxProfit = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (prices[i] &lt; minStock)</span><br><span class="line">               minStock = prices[i];</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               maxProfit = Math.max(maxProfit, prices[i] - minStock);</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> maxProfit;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="<!-more->">
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/12/03/BestTimetoBuyandSellStock/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/01/permutation/" itemprop="url">
                   Permutation
                 </a>
@@ -606,119 +707,12 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/23/NQueen/" itemprop="url">
-                  N-Queen
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-23T21:14:51+08:00" content="2015-11-23">
-              2015-11-23
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/23/NQueen/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/NQueen/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><a href="https://leetcode.com/problems/n-queens/">#51 N-Queens</a></p>
-<blockquote>
-<p>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.</p>
-</blockquote>
-<p><img src="http://www.leetcode.com/wp-content/uploads/2012/03/8-queens.png" alt=""></p>
-<blockquote>
-<p>Given an integer n, return all distinct solutions to the n-queens puzzle.<br>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space respectively.<br>For example,<br>There exist two distinct solutions to the 4-queens puzzle:</p>
-</blockquote>
-<pre><code>[
- [<span class="string">".Q.."</span>,  // Solution <span class="number">1</span>
-   <span class="string">"...Q"</span>,
-  <span class="string">"Q..."</span>,
-  <span class="string">"..Q."</span>],
-
- [<span class="string">"..Q."</span>,  // Solution <span class="number">2</span>
-   <span class="string">"Q..."</span>,
-  <span class="string">"...Q"</span>,
-  <span class="string">".Q.."</span>]
-]
-</code></pre><p>感觉题目说的不清不楚的，至少我看完上面的题目描述，我不知道我应该做什么。<br>将n个皇后棋子布置在一个n*n的棋盘上，使两个皇后之间无法互相攻击，及每一行，每一列，每一斜线上都只有唯一一个棋子存在(注意有两条斜线)。<br>以行作为回溯单位<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/23/NQueen/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -759,7 +753,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -773,7 +767,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
