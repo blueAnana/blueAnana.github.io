@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="dynamic programming,leetcode," />
+  <meta name="keywords" content="leetcode,two point," />
 
 
 
@@ -53,22 +53,31 @@
 
 
 
-<meta name="description" content="#300 Longest Increasing Subsequence
+<meta name="description" content="2Sum
+3Sum
+4Sum
 
-Given an unsorted array of integers, find the length of longest increasing subsequence.For example,Given [10, 9, 2, 5, 3, 7, 101, 18],The longest increasing subseq">
+2Sum
+Given an array of integers, find two numbers such that they add up to a specific target number.The function twoSum should return indices of the two numbers such that they add up t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Longest Increasing Subsequence">
-<meta property="og:url" content="https://blueanana.github.io/2015/11/29/LongestIncSubsequence/index.html">
+<meta property="og:title" content="2Sum, 3Sum and 4Sum">
+<meta property="og:url" content="https://blueanana.github.io/2015/12/09/Sum/index.html">
 <meta property="og:site_name" content="Pineapple">
-<meta property="og:description" content="#300 Longest Increasing Subsequence
+<meta property="og:description" content="2Sum
+3Sum
+4Sum
 
-Given an unsorted array of integers, find the length of longest increasing subsequence.For example,Given [10, 9, 2, 5, 3, 7, 101, 18],The longest increasing subseq">
-<meta property="og:updated_time" content="2015-12-03T14:08:56.503Z">
+2Sum
+Given an array of integers, find two numbers such that they add up to a specific target number.The function twoSum should return indices of the two numbers such that they add up t">
+<meta property="og:updated_time" content="2015-12-09T03:14:21.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Longest Increasing Subsequence">
-<meta name="twitter:description" content="#300 Longest Increasing Subsequence
+<meta name="twitter:title" content="2Sum, 3Sum and 4Sum">
+<meta name="twitter:description" content="2Sum
+3Sum
+4Sum
 
-Given an unsorted array of integers, find the length of longest increasing subsequence.For example,Given [10, 9, 2, 5, 3, 7, 101, 18],The longest increasing subseq">
+2Sum
+Given an array of integers, find two numbers such that they add up to a specific target number.The function twoSum should return indices of the two numbers such that they add up t">
 
 
 
@@ -80,7 +89,7 @@ Given an unsorted array of integers, find the length of longest increasing subse
   };
 </script>
 
-  <title> Longest Increasing Subsequence | Pineapple </title>
+  <title> 2Sum, 3Sum and 4Sum | Pineapple </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -236,7 +245,7 @@ Given an unsorted array of integers, find the length of longest increasing subse
             
             
               
-                Longest Increasing Subsequence
+                2Sum, 3Sum and 4Sum
               
             
           </h1>
@@ -245,8 +254,8 @@ Given an unsorted array of integers, find the length of longest increasing subse
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-29T20:50:57+08:00" content="2015-11-29">
-              2015-11-29
+            <time itemprop="dateCreated" datetime="2015-12-09T11:06:23+08:00" content="2015-12-09">
+              2015-12-09
             </time>
           </span>
 
@@ -256,8 +265,8 @@ Given an unsorted array of integers, find the length of longest increasing subse
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/29/LongestIncSubsequence/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/29/LongestIncSubsequence/" itemprop="commentsCount"></span>
+                <a href="/2015/12/09/Sum/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/09/Sum/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -276,35 +285,41 @@ Given an unsorted array of integers, find the length of longest increasing subse
       
 
       
-        <span itemprop="articleBody"><p><a href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" rel="external">#300 Longest Increasing Subsequence</a></p>
-<blockquote>
-<p>Given an unsorted array of integers, find the length of longest increasing subsequence.<br>For example,<br>Given [10, 9, 2, 5, 3, 7, 101, 18],<br>The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.<br>Your algorithm should run in O(n2) complexity.<br>Follow up: Could you improve it to O(n log n) time complexity?</p>
-</blockquote>
-<h1 id="O(n^2)">O(n^2)</h1><h2 id="based_on_longest_common_subsequence">based on longest common subsequence</h2><p>转化为最长公共子序列问题。先将数组排序(升序)，然后寻找与原数组的最长公共子序列。该子序列即为最长递增子序列。</p>
-<blockquote>
-<p>e.g.<br>[10, 9, <strong>2</strong>, 5, <strong>3</strong>, <strong>7</strong>, <strong>101</strong>, 18]<br>[<strong>2</strong>, <strong>3</strong>, 5, <strong>7</strong>, 9, 10, 18, <strong>101</strong>]</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="based_on_dp">based on dp</h2><p>用动规思想，分解成子问题。<br>用dp[i]记录数组第i个元素及之前元素的最长递增子序列长度。<br>比如，对于输入数组nums[n]，dp[i]记录nums[0] - nums[i]部分的最长递增子序列长度。<br>怎么获得dp[i]呢？ 根据dp[j] (j &lt; i)以及nums的值。</p>
-<ul>
-<li>若a[i]是递增序列的最后一个元素(大于子序列的所有元素)，则在之前记录的长度上加一。</li>
-<li>若a[i]不是最后一个元素(小于输入数组前面所有元素)，则当前最长子序列就是它本身，长度为一。</li>
+        <span itemprop="articleBody"><ul>
+<li><a href="https://leetcode.com/problems/2sum/" target="_blank" rel="external">2Sum</a></li>
+<li><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="external">3Sum</a></li>
+<li><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="external">4Sum</a></li>
 </ul>
-<blockquote>
-<p>dp[i] = max(dp[j] + 1), where (j &lt; i) &amp;&amp; (nums[j] &lt; nums[i]).<br>dp[i] = 1, where (j &lt; i) &amp;&amp; (nums[j] &gt;= nums[i]).</p>
+<h1 id="2Sum">2Sum</h1><blockquote>
+<p>Given an array of integers, find two numbers such that they add up to a specific target number.<br>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.<br>You may assume that each input would have exactly one solution.<br>Input: numbers={2, 7, 11, 15}, target=9<br>Output: index1=1, index2=2.</p>
 </blockquote>
-<p>遍历途中用遍历max记录最大长度。</p>
-<blockquote>
-<p>e.g.<br>a: [10, 9, 2, 5, 3, 7, 101, 18]<br>dp:[ 1, 1, 1, 2, 2, 3,   4,  4]</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)</span><br><span class="line">            dp[i] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] &gt; nums[j])</span><br><span class="line">                    dp[i] = Math.max(dp[i], dp[j]+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            max = Math.max(max, dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最开始的思路是比较暴力的解法，设两个嵌套循环，让数组内元素两两相加，直到某两者之和等于目标值，即为所求解，复杂度O(n^2)。</p>
+<p>优化：<br>利用HashMap，只需遍历一次，O(n)。<br>遍历数组，每次先判断目标值与当前元素的差值，在hash表中是否已存在(表示存在于前面的数组元素中)。<br>若已存在，则取出对应元素的下标，并输出；若不存在，则将(元素，下标)的键值对存入hash表中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">	<span class="keyword">if</span> (map.get(target - nums[i]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">	    result[<span class="number">0</span>] = map.get(target - nums[i]);</span><br><span class="line">	    result[<span class="number">1</span>] = i + <span class="number">1</span>;</span><br><span class="line">	    <span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">    map.put(nums[i], i + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一种（不适用本题，因为排序后会改变下标）：<br>借用两个分别指向头尾的变量，每次判断变量所指位置数之和与目标值的大小，在进行判断前，需要对数组进行排序，使之成为一个升序数组（降序则将以下规则反转）。<br>若和小于目标值，说明需要增大加数，则令左指针右移；同理，若和大于目标值，则要减小加数，令右指针左移；直至和与目标值相等，输出指针所指元素。</p>
 <hr>
-<h1 id="O(n_log_n)">O(n log n)</h1><p>在上一个dp中，对于元素a[i]，需要遍历之前所有的dp<a href="j &lt; i">j</a>。<br>用dp[i]表示当最长子序列长度为i时，该子序列最后一位数字。</p>
-<blockquote>
-<p>e.g.<br>a: [10, 9, 2, 5, 3, 7, 101, 18]<br>1st.  dp[1] = a[0] = 10，当只有第一个数字10时，长度为1的最长子序列的最后一位是10.<br>2nd.  dp[1] = a[1] = 9, 对于第二个数字9，因为它小于原先的dp[1]，所以此时的长度依然为1，将9放入dp[1]。<br>3rd.  dp[1] = a[2] = 2, 同上。<br>4th.  dp[1 + 1] = a[3] = 5， 此时5&gt;2，符合递增条件，所以最长子序列长度加一，即长度为2的子序列最后一位是5.<br>5th.  dp[2] = a[4] = 3， 3介于2和5之间，更新5。(每次更新最小的那位大于a[i]的数)<br>6th.  dp[3] = a[5] = 7。<br>7th.  dp[4] = a[6] = 101。<br>8th.  dp[4] = a[7] = 18。<br>最后，dp = [2, 3, 7, 18]。</p>
+<h1 id="3Sum">3Sum</h1><blockquote>
+<p>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.<br>Note:<br>Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ≤ b ≤ c)<br>The solution set must not contain duplicate triplets.</p>
 </blockquote>
-<p>在寻找替换位时，因为dp一定是升序数组，所以可以使用二分查找，而不用遍历所有，可以减少复杂度。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (nums.length == <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> max = <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length+<span class="number">1</span>];</span><br><span class="line">       dp[<span class="number">1</span>] = nums[<span class="number">0</span>];</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">           <span class="keyword">if</span> (nums[i] &gt; dp[max])</span><br><span class="line">               dp[++max] = nums[i];</span><br><span class="line">           <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">int</span> left = <span class="number">1</span>, right = max;</span><br><span class="line">               <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                   <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">                   <span class="keyword">if</span> (nums[i] &lt;= dp[mid])</span><br><span class="line">                       right = mid;</span><br><span class="line">                   <span class="keyword">else</span> </span><br><span class="line">                       left = mid + <span class="number">1</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               dp[left] = nums[i];</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> max;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-</span>
+<p>3Sum问题可以转化为2Sum问题：</p>
+<ul>
+<li>a+b+c = t   →   a+b = t-c</li>
+</ul>
+<p>外围循环遍历得c，循环内部为2Sum问题，寻找ab。</p>
+<ul>
+<li>注意去重</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length-<span class="number">2</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i != <span class="number">0</span> &amp;&amp; nums[i] == nums[i-<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">int</span> left = i+<span class="number">1</span>, right = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[left] + nums[right] == -nums[i]) &#123;</span><br><span class="line">                list.add(Arrays.asList(nums[i], nums[left], nums[right]));</span><br><span class="line">                <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left+<span class="number">1</span>]) left++;</span><br><span class="line">                <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] == nums[right-<span class="number">1</span>]) right--;</span><br><span class="line">                left++;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[left] + nums[right] &lt; -nums[i])</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="4Sum">4Sum</h1><blockquote>
+<p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.<br>Note:<br>Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a ≤ b ≤ c ≤ d)<br>The solution set must not contain duplicate quadruplets.<br>    For example, given array S = {1 0 -1 0 -2 2}, and target = 0.</p>
+</blockquote>
+<pre><code>A solution <span class="built_in">set</span> is:
+(-<span class="number">1</span>,  <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>)
+(-<span class="number">2</span>, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>)
+(-<span class="number">2</span>,  <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>)
+</code></pre><p>与3Sum同理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; fourSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i != <span class="number">0</span> &amp;&amp; nums[i] == nums[i-<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i+<span class="number">1</span>; j &lt; nums.length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j != i+<span class="number">1</span> &amp;&amp; nums[j] == nums[j-<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> left = j+<span class="number">1</span>, right = nums.length-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[left] + nums[right] == target - nums[i] - nums[j]) &#123;</span><br><span class="line">                    list.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));</span><br><span class="line">                    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left+<span class="number">1</span>]) left++;</span><br><span class="line">                    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] == nums[right-<span class="number">1</span>]) right--;</span><br><span class="line">                    left++;</span><br><span class="line">                    right--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (nums[left] + nums[right] &lt; target - nums[i] - nums[j])</span><br><span class="line">                    left++;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    right--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -312,9 +327,9 @@ Given an unsorted array of integers, find the length of longest increasing subse
       
         <div class="post-tags">
           
-            <a href="/tags/dynamic-programming/" rel="tag">#dynamic programming</a>
-          
             <a href="/tags/leetcode/" rel="tag">#leetcode</a>
+          
+            <a href="/tags/two-point/" rel="tag">#two point</a>
           
         </div>
       
@@ -323,17 +338,13 @@ Given an unsorted array of integers, find the length of longest increasing subse
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/24/StringIII/" rel="next" title="StringIII">
-                <i class="fa fa-chevron-left"></i> StringIII
+              <a href="/2015/12/03/EditDistance/" rel="next" title="EditDistance">
+                <i class="fa fa-chevron-left"></i> EditDistance
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/01/permutation/" rel="prev" title="Permutation">
-                Permutation <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -360,8 +371,8 @@ Given an unsorted array of integers, find the length of longest increasing subse
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/29/LongestIncSubsequence/"
-           data-title="Longest Increasing Subsequence" data-url="https://blueanana.github.io/2015/11/29/LongestIncSubsequence/">
+      <div class="ds-thread" data-thread-key="2015/12/09/Sum/"
+           data-title="2Sum, 3Sum and 4Sum" data-url="https://blueanana.github.io/2015/12/09/Sum/">
       </div>
     
   </div>
@@ -468,7 +479,7 @@ Given an unsorted array of integers, find the length of longest increasing subse
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#O(n^2)"><span class="nav-number">1.</span> <span class="nav-text">O(n^2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#based_on_longest_common_subsequence"><span class="nav-number">1.1.</span> <span class="nav-text">based on longest common subsequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#based_on_dp"><span class="nav-number">1.2.</span> <span class="nav-text">based on dp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#O(n_log_n)"><span class="nav-number">2.</span> <span class="nav-text">O(n log n)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2Sum"><span class="nav-number">1.</span> <span class="nav-text">2Sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3Sum"><span class="nav-number">2.</span> <span class="nav-text">3Sum</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4Sum"><span class="nav-number">3.</span> <span class="nav-text">4Sum</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
