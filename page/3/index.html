@@ -238,106 +238,6 @@
             
               
                 
-                <a class="post-title-link" href="/2015/11/19/SomeAboutCycle/" itemprop="url">
-                  Some About Cycle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-19T19:34:29+08:00" content="2015-11-19">
-              2015-11-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/19/SomeAboutCycle/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/19/SomeAboutCycle/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="判断环">判断环</h1><p><a href="https://leetcode.com/problems/linked-list-cycle/">#141 Linked List Cycle</a></p>
-<blockquote>
-<p>Given a linked list, determine if it has a cycle in it.<br>Follow up:<br>Can you solve it without using extra space?</p>
-</blockquote>
-<p>设两个指向头部的变量one &amp; two，one每次前进一个节点，two另一个每次前进两个。</p>
-<ul>
-<li>如果链表中存在环，则最后两个变量都会指向同一个节点。<ul>
-<li>设两变量都已在环中，两者相距x步。当one继续走x步时，two走了2x步，这时两者重合。</li>
-</ul>
-</li>
-<li>若果链表中没有环，则最后two的指针会走向链尾null。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (head == <span class="keyword">null</span>)</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       ListNode one = head, two = head;</span><br><span class="line">       <span class="keyword">while</span> (two.next != <span class="keyword">null</span> &amp;&amp; two.next.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">           one = one.next;</span><br><span class="line">           two = two.next.next;</span><br><span class="line">           <span class="keyword">if</span> (one == two)</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/19/SomeAboutCycle/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2015/11/18/BasicBinarySearch/" itemprop="url">
                   Basic Binary Search
                 </a>
@@ -544,7 +444,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -611,7 +511,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2015</span>
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
