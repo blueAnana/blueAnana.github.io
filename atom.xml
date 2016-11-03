@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Record Something]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://blueanana.github.io/"/>
-  <updated>2016-11-02T16:45:31.602Z</updated>
+  <updated>2016-11-03T13:34:12.432Z</updated>
   <id>https://blueanana.github.io/</id>
   
   <author>
@@ -19,9 +19,9 @@
     <link href="https://blueanana.github.io/2016/11/02/ArgsAndKwargs/"/>
     <id>https://blueanana.github.io/2016/11/02/ArgsAndKwargs/</id>
     <published>2016-11-02T14:24:14.000Z</published>
-    <updated>2016-11-02T16:45:31.602Z</updated>
-    <content type="html"><![CDATA[<p>From frist touched python, I have met many differeces from Java.<br>Now, I want to indroduce a new thing I learnt yesterday – <em>args and **kwargs. In fact, there is no need to confuse about what args and kwargs mean, the names are just conventional. let’s focus our attention on </em> and **.</p>
-<p>We may often see <em> and *</em> used as arguments in function definitions, but they have different meanings when used in function calls. In the former case, they perform a pack process, and in the latter case, they perform a unpack process.</p>
+    <updated>2016-11-03T13:34:12.432Z</updated>
+    <content type="html"><![CDATA[<p>From frist touched python, I have met many differeces from Java.<br>Now, I want to indroduce a new thing I learnt yesterday – *args and **kwargs. In fact, there is no need to confuse about what args and kwargs mean, the names are just conventional. let’s focus our attention on * and **.</p>
+<p>We may often see * and ** used as arguments in function definitions, but they have different meanings when used in function calls. In the former case, they perform a pack process, and in the latter case, they perform a unpack process.</p>
 <h1 id="In_Function_Definition">In Function Definition</h1><h2 id="Common_Definition">Common Definition</h2><pre><code><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b)</span>:</span>
     <span class="keyword">print</span> a, b
 </code></pre><p>This is a common function definition in python. When we call it, we need to pass exact 2 arguments to it. less or more parameter will cause error.</p>
@@ -35,7 +35,7 @@ TypeError: foo() takes exactly <span class="number">2</span> arguments (<span cl
 </code></pre><a id="more"></a>
 <h2 id="Definition_with_args_and_kwargs">Definition with <em>args and </em>kwargs</h2><pre><code><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(*args, **kwargs)</span>:</span>
     <span class="keyword">print</span> args, kwargs
-</code></pre><p>When we use <em>args and **kwargs, we can pass an arbitrary number of arguments. The difference between them is that </em>args can accept a non-keyword arguments list, while **kwargs’ is a keyword arguments list.</p>
+</code></pre><p>When we use *args and **kwargs, we can pass an arbitrary number of arguments. The difference between them is that *args can accept a non-keyword arguments list, while **kwargs’ is a keyword arguments list.</p>
 <p>We can regard args as tuple and kwargs as dictionary.</p>
 <pre><code>foo()
 <span class="preprocessor"># output</span>
@@ -48,11 +48,11 @@ foo(<span class="number">1</span>, <span class="number">2</span>, <span class="n
 foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, a=<span class="number">1</span>, b=<span class="number">2</span>, c=<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)
 <span class="preprocessor"># output</span>
 SyntaxError: non-keyword arg after keyword arg
-</code></pre><p>When we pass an arbitrary number of non-keyword arguments, <em> packs them as a tuple into args. And *</em> packs keyword arguments as a dictionary into kwargs. </p>
+</code></pre><p>When we pass an arbitrary number of non-keyword arguments, * packs them as a tuple into args. And ** packs keyword arguments as a dictionary into kwargs. </p>
 <ul>
-<li>note: <em>args needs to be in front of *</em>kwargs</li>
+<li>note: *args needs to be in front of **kwargs</li>
 </ul>
-<h1 id="In_Function_Call">In Function Call</h1><p>If <em> and *</em> pack the arguments into tuple and dic in function definition, they unpack the list and dic into separate arguments.</p>
+<h1 id="In_Function_Call">In Function Call</h1><p>If * and ** pack the arguments into tuple and dic in function definition, they unpack the list and dic into separate arguments.</p>
 <pre><code><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b, c)</span>:</span>
     <span class="keyword">print</span> a, b, c
 
@@ -62,10 +62,10 @@ mydic = {<span class="string">'c'</span>: <span class="number">3</span>}
 foo(*mylist, **mydic)
 <span class="comment"># output</span>
 <span class="number">1</span> <span class="number">2</span> <span class="number">3</span>
-</code></pre><p>In above code, <em> unpacks mylist into 1, 2, *</em> unpacks mydic into c=3.<br>Then, foo receive the arguments as foo(1, 2, c=3).</p>
+</code></pre><p>In above code, * unpacks mylist into 1, 2, ** unpacks mydic into c=3.<br>Then, foo receive the arguments as foo(1, 2, c=3).</p>
 <h1 id="Mix_Arguments">Mix Arguments</h1><p>The order the these arguments is:</p>
 <ul>
-<li>regular argument, <em> argument, *</em> argument</li>
+<li>regular argument, * argument, ** argument</li>
 </ul>
 <pre><code><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b, c, *args, **kwargs)</span>:</span>
     <span class="keyword">print</span> a, b, c
@@ -82,8 +82,8 @@ foo(<span class="number">1</span>, c=<span class="number">3</span>, *mylist, **m
 </code></pre><p>Anyway, alert the order both in definition or call, wrong order will cause error.</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>From frist touched python, I have met many differeces from Java.<br>Now, I want to indroduce a new thing I learnt yesterday – <em>args and **kwargs. In fact, there is no need to confuse about what args and kwargs mean, the names are just conventional. let’s focus our attention on </em> and **.</p>
-<p>We may often see <em> and *</em> used as arguments in function definitions, but they have different meanings when used in function calls. In the former case, they perform a pack process, and in the latter case, they perform a unpack process.</p>
+    <![CDATA[<p>From frist touched python, I have met many differeces from Java.<br>Now, I want to indroduce a new thing I learnt yesterday – *args and **kwargs. In fact, there is no need to confuse about what args and kwargs mean, the names are just conventional. let’s focus our attention on * and **.</p>
+<p>We may often see * and ** used as arguments in function definitions, but they have different meanings when used in function calls. In the former case, they perform a pack process, and in the latter case, they perform a unpack process.</p>
 <h1 id="In_Function_Definition">In Function Definition</h1><h2 id="Common_Definition">Common Definition</h2><pre><code><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b)</span>:</span>
     <span class="keyword">print</span> a, b
 </code></pre><p>This is a common function definition in python. When we call it, we need to pass exact 2 arguments to it. less or more parameter will cause error.</p>
