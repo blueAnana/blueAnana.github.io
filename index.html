@@ -281,6 +281,121 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/02/ArgsAndKwargs/" itemprop="url">
+                  Python - *args and **kwargs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-02T22:24:14+08:00" content="2016-11-02">
+              2016-11-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/02/ArgsAndKwargs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/02/ArgsAndKwargs/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>From frist touched python, I have met many differeces from Java.<br>Now, I want to indroduce a new thing I learnt yesterday – *args and **kwargs. In fact, there is no need to confuse about what args and kwargs mean, the names are just conventional. let’s focus our attention on * and **.</p>
+<p>We may often see * and ** used as arguments in function definitions, but they have different meanings when used in function calls. In the former case, they perform a pack process, and in the latter case, they perform a unpack process.</p>
+<h1 id="In_Function_Definition">In Function Definition</h1><h2 id="Common_Definition">Common Definition</h2><pre><code><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b)</span>:</span>
+    <span class="keyword">print</span> a, b
+</code></pre><p>This is a common function definition in python. When we call it, we need to pass exact 2 arguments to it. less or more parameter will cause error.</p>
+<pre><code>foo(<span class="number">1</span>, <span class="number">2</span>)
+<span class="preprocessor"># output</span>
+<span class="number">1</span> <span class="number">2</span>
+
+foo(<span class="number">1</span>)
+<span class="preprocessor"># output </span>
+TypeError: foo() takes exactly <span class="number">2</span> arguments (<span class="number">1</span> given)
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/02/ArgsAndKwargs/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/09/Sum/" itemprop="url">
                   2Sum, 3Sum and 4Sum
                 </a>
@@ -713,121 +828,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/24/StringIII/" itemprop="url">
-                  StringIII
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-24T19:24:45+08:00" content="2015-11-24">
-              2015-11-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/24/StringIII/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/24/StringIII/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li>Reverse Words in a String</li>
-<li>Longest Common SubSequence</li>
-</ul>
-<h1 id="Reverse_Words_in_a_String">Reverse Words in a String</h1><p><a href="https://leetcode.com/problems/reverse-words-in-a-string/">Reverse Words in a String</a></p>
-<blockquote>
-<p>Given an input string, reverse the string word by word.<br>For example,<br>Given s = “the sky is blue”,<br>return “blue is sky the”.</p>
-</blockquote>
-<p>之前有遇到这个题目，现在看到别人家的simple solution之后，发现用暴力解题的我真是太low了。<br>利用正则表达式，直接调用String类自带的工具–split()方法。</p>
-<blockquote>
-<p>split() – “将字符串从正则表达式匹配的地方切开。”<br>–《Thinking in Java》</p>
-</blockquote>
-<p>在这题中，就可以使用该方法，将String字符串从根据空格切割成String数组，每个元素就是一个单词(貌似不用考虑标点？)。<br>最后倒序输出就可以了。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/24/StringIII/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -873,7 +873,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -883,7 +883,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
