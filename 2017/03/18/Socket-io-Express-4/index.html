@@ -1,0 +1,696 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Pineapple" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="This is my first try of nodejs, I just want to develope a small web application, from frontend to backend. The developing way is not smooth, I write this blog to trace the questions I have met and my">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Socket.io + Express 4">
+<meta property="og:url" content="https://blueanana.github.io/2017/03/18/Socket-io-Express-4/index.html">
+<meta property="og:site_name" content="Pineapple">
+<meta property="og:description" content="This is my first try of nodejs, I just want to develope a small web application, from frontend to backend. The developing way is not smooth, I write this blog to trace the questions I have met and my">
+<meta property="og:updated_time" content="2017-03-18T09:47:28.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Socket.io + Express 4">
+<meta name="twitter:description" content="This is my first try of nodejs, I just want to develope a small web application, from frontend to backend. The developing way is not smooth, I write this blog to trace the questions I have met and my">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://blueanana.github.io/2017/03/18/Socket-io-Express-4/"/>
+
+
+  <title> Socket.io + Express 4 | Pineapple </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7452271549786560a18f85a15768f130";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Pineapple</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Record Something</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'jyrsjRty3PisTWMMgmt_','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Socket.io + Express 4
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-18T15:12:05+08:00" content="2017-03-18">
+              2017-03-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/18/Socket-io-Express-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/18/Socket-io-Express-4/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This is my first try of nodejs, I just want to develope a small web application, from frontend to backend. The developing way is not smooth, I write this blog to trace the questions I have met and my own understanding. I hope it will be able to help those who are freshmen of nodejs, just as me.</p>
+<h1 id="Strucutre_of_Express4">Strucutre of Express4</h1><p>The reason why I choose Express 4 is that I created a new Express project in WebStorm and WebStorm uses Express 4 as defult version.</p>
+<a id="more"></a>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> <span class="constant">Project</span></span><br><span class="line"></span>  -<span class="ruby"> bin</span><br><span class="line"></span>    -<span class="ruby"> www         *www is the startup js file, <span class="keyword">when</span> project launches, it is called first.*</span><br><span class="line"></span>  -<span class="ruby"> node_modules  *it saves all dependencies*</span><br><span class="line"></span>  -<span class="ruby"> public        *static files - image/css/js*</span><br><span class="line"></span>  -<span class="ruby"> routes        *main logic - controller*</span><br><span class="line"></span>  -<span class="ruby"> views         *webpage - html/ejs*</span><br><span class="line"></span>  -<span class="ruby"> app.js        *core configration*</span><br><span class="line"></span>  -<span class="ruby"> package.json  *dependencies configration <span class="keyword">and</span> project info*</span></span><br></pre></td></tr></table></figure>
+<h1 id="Install_Socket-io">Install Socket.io</h1><p>Open your command line, enter the root directory of your project. then use npm to install.</p>
+<blockquote>
+<p>$ npm install –save express@4.15.2</p>
+</blockquote>
+<p>After running above command, we will find there is a folder - socket.io under node_modules, and the dependency is also added automatically.</p>
+<p>Is it easy? However, when I first tried, I even didn’t know the correct path to install socket.io. </p>
+<h1 id="Realization">Realization</h1><p>Now, Express4 and Socket.io are both ready, let’s combine them to proper functioning.</p>
+<h2 id="Back_End">Back End</h2><p>We can easily get the sample from the official website of socket.io<br><a href="https://socket.io/get-started/chat/" target="_blank" rel="external">https://socket.io/get-started/chat/</a></p>
+<blockquote>
+<p>var app = require(‘express’)();<br>var http = require(‘http’).Server(app);<br>var io = require(‘socket.io’)(http);</p>
+<p>app.get(‘/‘, function(req, res){<br>  res.sendFile(__dirname + ‘/index.html’);<br>});</p>
+<p>io.on(‘connection’, function(socket){<br>  console.log(‘a user connected’);<br>});</p>
+<p>http.listen(3000, function(){<br>  console.log(‘listening on *:3000’);<br>});</p>
+</blockquote>
+<p>This sample creates a socket.io object and pass the http server to it. After server launches, it will listen to 3000 port. When a connection is set up, it will print the log - ‘a user connected’.<br>Unfortunately, this sample is base on Express 3, all logics are put into a js file(like express module, http server setup, socket.io logic).<br>And in Express 4, the modules are separated, and combined by module.exports &amp; requir(). </p>
+<ul>
+<li>http module is put in <em>www</em> file.</li>
+<li>express and most modules are put in <em>app.js</em> file.</li>
+<li>controller logic are put in <em>index.js</em> file.</li>
+</ul>
+<p><em>www</em> is the startup file, it requires the module form <em>app.js</em>, then <em>app.js</em> requir <em>index.js</em>.</p>
+<blockquote>
+<p>www &lt;- app.js &lt;- index.js<br>a &lt;- b  =  a requires b.</p>
+</blockquote>
+<p>I think it will confuse a lot of freshmen, at lest, it confused me.<br>I simply exported the http server from <em>www</em>, and required it from <em>index.js</em>, finally, it caused a dead loop.<br>So we must put all logics in one js file? The answer is certainly no. </p>
+<h3 id="code">code</h3><p>I’ll put my code here, and analyse it later, you can refer to my analysis if you can not understand the code.</p>
+<p>in <em>index.js</em>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">io</span>) </span>&#123;</span><br><span class="line">    io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'a user connected'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> router;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>in <em>app.js</em>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> socket_io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Socket.io</span></span><br><span class="line"><span class="keyword">var</span> io = socket_io();</span><br><span class="line">app.io = io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> index = <span class="built_in">require</span>(<span class="string">'./routes/index'</span>)(io); <span class="comment">// remember to remove the original requir() of index.js</span></span><br></pre></td></tr></table></figure>
+<p>in <em>www</em>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Socket.io</span></span><br><span class="line"><span class="keyword">var</span> io = app.io</span><br><span class="line">io.attach( server );</span><br></pre></td></tr></table></figure>
+<h3 id="‘require()’_Modules_Execution_Sequence">‘require()’ Modules Execution Sequence</h3><p>Fristly, I want to analyse the sequence of require() function.<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">test1.js</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"This is test 1."</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> t1() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"This is a normal function in test 1."</span>);</span><br><span class="line">&#125;</span><br><span class="line">t1();</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">function</span> () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"This is a export function in test 1."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test2.js</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"This is test 2."</span>);</span><br><span class="line"><span class="keyword">var</span> test1 = <span class="built_in">require</span>(<span class="string">'./test1'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> t2()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"This is a normal function is test 2."</span>);</span><br><span class="line">&#125;</span><br><span class="line">t2();</span><br><span class="line">test1();</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">function</span> () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"This is a export function in test 2."</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main.js</span><br><span class="line"><span class="keyword">var</span> test2 = <span class="built_in">require</span>(<span class="string">'./test2'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"This is main."</span>);</span><br><span class="line">test2();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">result</span>:</span><br><span class="line">This <span class="keyword">is</span> test <span class="number">2.</span></span><br><span class="line">This <span class="keyword">is</span> test <span class="number">1.</span></span><br><span class="line">This <span class="keyword">is</span> a normal <span class="keyword">function</span> <span class="keyword">in</span> test <span class="number">1.</span></span><br><span class="line">This <span class="keyword">is</span> a normal <span class="keyword">function</span> <span class="keyword">in</span> test <span class="number">2.</span></span><br><span class="line">This <span class="keyword">is</span> a <span class="keyword">export</span> <span class="keyword">function</span> <span class="keyword">in</span> test <span class="number">1.</span></span><br><span class="line">This <span class="keyword">is</span> main.</span><br><span class="line">This <span class="keyword">is</span> a <span class="keyword">export</span> <span class="keyword">function</span> <span class="keyword">in</span> test <span class="number">2.</span></span><br></pre></td></tr></table></figure></p>
+<p>From the result, we can find that, the sequence of js is from top to bottom.<br>When <em>require(‘./test1’)</em> function is executed, it will run the code in <em>test1.js</em>. And pass the function in module.exports, when <em>test1()</em> is called, it runs the export function.</p>
+<h3 id="Code_Analysis">Code Analysis</h3><p>After understanding the sequence of <em>require()</em>, we can analyse the code easier.<br>in <em>index.js</em>, it exports the connection function and set the parameter as io(socket.io object).<br>So where do we get the socket.io? In <em>app.js</em>.<br>In <em>app.js</em>, it creates the socket.io obeject, and then requires <em>index.js</em> passing the object as parameter. Now, the <em>io.on()</em> is valid.<br>But it still can not work, because it lacks http server.<br>There is a function in socket.io, through this function, we can combind the http server with socket.io after initialization. It is - <em>io.attach( server )</em>.<br><em>www</em> requires <em>app.js</em> and get socket.io object, finally, attach the http server to socket.io obeject.</p>
+<p>The basic configration on server is completed.</p>
+<h2 id="Front_End">Front End</h2><p>The method to use socket.io in html is easier.<br>Firstly, add the script element, and set the source as below(this is the relative path of socket.io installed on server).</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;script src=&#34;/socket.io/socket.io.js&#34;&#62;&#60;/script&#62;</span><br></pre></td></tr></table></figure>
+<p>Then, create another js element to realize our logic.<br>We just need to use a funtion to connect server.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var socket = io();</span><br></pre></td></tr></table></figure>
+<p>Run the project, and open the url.<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125;</span><br><span class="line">GET / <span class="number">304</span> <span class="number">23.007</span> <span class="keyword">ms</span> <span class="title">- -</span><br><span class="line">a</span> <span class="keyword">user</span> <span class="title">connected</span></span><br></pre></td></tr></table></figure></p>
+<p>Succeed!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/02/ArgsAndKwargs/" rel="next" title="Python - *args and **kwargs">
+                <i class="fa fa-chevron-left"></i> Python - *args and **kwargs
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/18/Socket-io-Express-4/"
+           data-title="Socket.io + Express 4" data-url="https://blueanana.github.io/2017/03/18/Socket-io-Express-4/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="butterfly" />
+          <p class="site-author-name" itemprop="name">butterfly</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://xidui.github.io/" target="_blank" title="xidui">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  xidui
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Strucutre_of_Express4"><span class="nav-number">1.</span> <span class="nav-text">Strucutre of Express4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install_Socket-io"><span class="nav-number">2.</span> <span class="nav-text">Install Socket.io</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Realization"><span class="nav-number">3.</span> <span class="nav-text">Realization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Back_End"><span class="nav-number">3.1.</span> <span class="nav-text">Back End</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#code"><span class="nav-number">3.1.1.</span> <span class="nav-text">code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘require()’_Modules_Execution_Sequence"><span class="nav-number">3.1.2.</span> <span class="nav-text">‘require()’ Modules Execution Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code_Analysis"><span class="nav-number">3.1.3.</span> <span class="nav-text">Code Analysis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Front_End"><span class="nav-number">3.2.</span> <span class="nav-text">Front End</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">butterfly</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blueanana"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
